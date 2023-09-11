@@ -1,0 +1,2 @@
+ in command string = wmic /namespace:\\root\wmi PATH MSAcpi_ThermalZoneTemperature get CurrentTemperature
+ in powerShell = get-wmiobject msacpi_thermalzonetemperature -namespace “root/wmi”
