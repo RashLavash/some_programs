@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/registrationAutomobileStyle.css">
+    <link rel="icon" href="icons/lamborghiniIcon.jpg">
+    <title>By Dagestan Auto</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+<!------------------------------------------------------Header----------------------------------------------->
+            <header>
+                    <div class="headerContainer">    
+                        <div class="imageContainer">
+                            <img src="images/porsche911.jpg" alt="Логотип автомагазина" width="100px">
+                        </div>
+                        <div class="siteNameContainer">
+                            <a href="automobile.html" title="Нажмите чтобы вернуться на главную">
+                                <p>By</p>
+                                <p>Dagestan</p>
+                                <p>Auto</p>
+                            </a>
+                        </div>
+                        <nav class="headerNavMenu">
+                            <ul>
+                                <li><a href="automobile.html">Главная</a></li>
+                                <li><a href="categoryAutomobile.html">Категория авто</a></li>
+                                <li><a href="contactUsAutomobile.html">Связь с нами</a></li>
+                                <li><a href="aboutUsAutomobile.html">О нас</a></li>
+                                <li><div></div></li>
+                                <li><a href="singInAutomobile.html">Войти</a></li>
+                                <li><a href="registrationAutomobile.html">Регистрация</a></li>
+                            </ul>
+                        </nav>
+                    </div>    
+            </header>
+<!------------------------------------------------------Main----------------------------------------------->
+            <main>
+                <div class="mainContainer">
+                    <div class="formContainer">
+                        <div class="registrationText"><p>Регистрация</p></div>
+                        <form action="#" method="post" enctype="multipart/form-data" class="registrationForm">
+                            <div class="userInformation">
+                                <div class="userNameContainer">
+                                    <p><label for="userName">Придумайте себе имя</label></p>
+                                    <p><input type="text" name="userName" id="userName" class="inputArea"></p>
+                                </div>
+                                <div class="userSurnameContainer">
+                                    <p><label for="userSurname">Придумайте себе фамилию</label></p>
+                                    <p><input type="text" name="userSurname" id="userSurname" class="inputArea"></p>
+                                </div>
+                                <div class="userAgeContainer">
+                                    <p><label for="userAge">Укажите свой возраст</label></p>
+                                    <p><input type="number" name="userAge" id="userAge" class="inputArea"></p>
+                                </div>
+                                <div class="userPasswordContainer">
+                                    <p><label for="userPassword">Придумайте пароль</label></p>
+                                    <p><input type="password" name="userPassword" id="userPassword" class="inputArea"></p>
+                                    <p class="passwordClue">*Пароль должен состоять из латинских символов, минимальная длина пароля 8 символов.</p>
+                                </div>
+                                <div class="repeatUserPasswordContainer">
+                                    <p><label for="repeatUserPassword">Повторите придуманный вами пароль</label></p>
+                                    <p><input type="password" name="repeatUserPassword" id="repeatUserPassword" class="inputArea"></p>
+                                </div>
+                                <div class="userGenderContainer">
+                                    <p class="indicate">Укажите свой пол</p>
+                                    <div class="genderContainer">
+                                        <p class="userGender"><input type="radio" name="userGender" id="male" value="male"></p>
+                                        <p class="userGender"><label for="male">Мужской</label></p>
+                                        <p class="userGender"><input type="radio" name="userGender" id="female" value="female"></p>
+                                        <p class="userGender"><label for="female">Женский</label></p>
+                                        <p class="userGender"><input type="radio" name="userGender" id="fckForYou" value="fckForYou" checked></p>
+                                        <p class="userGender"><label for="fckForYou">А хрен вам</label></p>   
+                                        <p class="userGender"><input type="radio" name="userGender" id="laminate" value="laminate"></p>
+                                        <p class="userGender"><label for="laminate">Ломинат</label></p>
+                                        <p class="userGender"><input type="radio" name="userGender" id="tile" value="tile"></p>
+                                        <p class="userGender"><label for="tile">Кафель</label></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="userMailContainer">
+                                <p><label for="email">Введите свою почту</label></p>
+                                <p><input type="email" name="userEmailmail" id="email" class="inputArea"></p>
+                            </div>
+                            <div class="userNumberContainer">
+                                <p><label for="userNumber">Цифры свои сюда урони</label></p>
+                                <p><input type="tel" name="userNumber" id="userNumber"></p>
+                            </div>
+                            <div class="buttonContainer">
+                                <button type="submit">Отправить</button>
+                                <button type="reset">Сбросить все</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </main>            
+<!------------------------------------------------------Footer----------------------------------------------->
+            <footer>
+                <div class="footerBlock">
+                    <p>Cтудент колледжа ДГУНХ</p>
+                    <div class="footerBlockItem">
+                        <p>Махачкала 2023 г.</p>
+                        <p>ПвКС 3-2</p>
+                    </div>
+                    <p>Зулпукаров Рашидбег Мурадбегович</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

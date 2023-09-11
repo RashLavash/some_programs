@@ -1,0 +1,323 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    height: 100%;
+}
+body{
+    height: 100%;
+    background-image: url(../images/bacgroundImageOnAutomobileWebsite.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.wrapper{
+    min-height: 100%;
+    overflow: hidden;
+}
+.container{
+    min-height: 650px;
+    max-width: 1048px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+@media (max-height: 1081px) {
+    .container{
+        min-height: 760px;
+    }
+    
+}
+@media (max-height: 650px) {
+    .container{
+        min-height: 650px;
+    }
+    
+}
+
+/* ----------------------------Header------------------------------ */
+
+header{
+    margin-top: 10px;
+}
+.headerContainer{
+    display: flex;
+    min-width: 100%;
+    height: 100px;
+    background-color: rgb(54, 54, 54);
+    border-radius: 10px;
+}
+.imageContainer img{
+    border-radius: 5px;
+}
+.imageContainer{
+    display: inline-block;
+    width: 120px;
+    padding: 14px 0 0 10px;
+}
+.siteNameContainer{
+    display: inline-flex;
+    min-width: 335px;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+}
+.siteNameContainer p{
+    font-size: 40px;
+    display: inline-block;
+    color: white;
+}
+.siteNameContainer p:nth-child(1){
+    color: rgb(28, 197, 28);
+    margin: 0 -4px 0 0 ;
+}
+.siteNameContainer p:nth-child(2){
+    color: rgb(0, 110, 255);
+    margin: 0 -4px 0 0 ;
+}
+.siteNameContainer p:nth-child(3){
+    color: red;
+}
+.headerNavMenu{
+    display: inline-flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+.headerNavMenu ul{
+    display: grid;
+    min-width: 573px;
+    grid-column-gap: 12px;
+    height: 100px;
+    grid-template-columns: 61px 116px 100px 44px 0 49px 96px;
+    grid-template-rows: 100px;
+    align-content: center;
+}
+.headerNavMenu li{
+    display: inline-flex;
+    align-items: center;
+}
+.headerNavMenu div{
+    height: 50px;
+    border-right: 2px solid burlywood;
+}
+.headerNavMenu a{
+    text-decoration: none;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 5px;
+    color: burlywood;
+    font-size: 18px;
+}
+.headerNavMenu a:hover{
+    transition: 0.5s;
+    background-color: white;
+    color: black;
+}
+
+/* ----------------------------Main------------------------------ */
+main{
+    margin-top: 10px;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+}
+.mainContainer{
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+}
+.formContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgb(54, 54, 54);
+    border-radius: 12px;
+    padding: 20px;
+}
+.registrationForm{
+    display: flex;
+    flex-direction: column;
+}
+.registrationText{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.registrationText p{
+    color: burlywood;
+    font-size: 40px;
+}
+.userNameContainer{
+    margin-bottom: 10px;
+}
+.userNameContainer label{
+    font-size: 25px;
+    color: burlywood;
+}
+.userNameContainer input{
+    background-color: rgb(54, 54, 54);
+    border: none;
+    border-bottom: 2px solid burlywood;
+}
+.userNameContainer input:focus{
+    color: burlywood;
+}
+.userSurnameContainer{
+    margin-bottom: 10px;
+}
+.userSurnameContainer{
+    font-size: 25px;
+    color: burlywood;
+}
+.userSurnameContainer input{
+    background-color: rgb(54, 54, 54);
+    border: none;
+    border-bottom: 2px solid burlywood;
+}
+.userSurnameContainer input:focus{
+    color: burlywood;
+}
+.userAgeContainer{
+    margin-bottom: 10px;
+}
+.userAgeContainer label{
+    font-size: 25px;
+    color: burlywood;
+}
+.userAgeContainer input{
+    background-color: rgb(54, 54, 54);
+    border: none;
+    border-bottom: 2px solid burlywood;
+}
+.userAgeContainer input:focus{
+    color: burlywood;
+}
+.userPasswordContainer{
+    margin-bottom: 10px;
+}
+.userPasswordContainer label{
+    font-size: 25px;
+    color: burlywood;
+}
+.userPasswordContainer input{
+    background-color: rgb(54, 54, 54);
+    border: none;
+    border-bottom: 2px solid burlywood;
+}
+.userPasswordContainer input:focus{
+    color: burlywood;
+}
+.repeatUserPasswordContainer{
+    margin-bottom: 10px;
+    font-size: 25px;
+    color: burlywood;
+}
+.repeatUserPasswordContainer input{
+    background-color: rgb(54, 54, 54);
+    border: none;
+    border-bottom: 2px solid burlywood;
+}
+.repeatUserPasswordContainer input:focus{
+    color: burlywood;
+}
+.userGenderContainer{
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: 1fr 765px;
+    grid-template-rows: 1fr;
+}
+.indicate{
+    font-size: 25px;
+    color: burlywood;
+    margin-right: 15px;
+}
+.genderContainer{
+    display: flex;
+}
+.genderContainer label{
+    font-size: 25px;
+    color: burlywood;
+    margin-left: 5px;
+}
+.genderContainer input{
+    margin-left: 5px;   
+}
+.genderContainer p:nth-child(2n+1){
+    display: flex;
+    align-items: center;    
+}
+.passwordClue{
+    color: burlywood;
+    font-size: 16px;
+}
+.userMailContainer{
+    margin-bottom: 10px;
+}
+.userMailContainer label{
+    font-size: 25px;
+    color: burlywood;
+}
+.userMailContainer input{
+    background-color: rgb(54, 54, 54);
+    border: none;
+    border-bottom: 2px solid burlywood;
+}
+.userMailContainer input:focus{
+    color: burlywood;
+}
+.userNumberContainer{
+    margin-bottom: 10px;
+}
+.userNumberContainer label{
+    font-size: 25px;
+    color: burlywood;
+}
+.userNumberContainer input{
+    background-color: rgb(54, 54, 54);
+    border: none;
+    border-bottom: 2px solid burlywood;
+}
+.userNumberContainer input:focus{
+    color: burlywood;
+}
+.buttonContainer button:nth-child(1){
+    margin-left: 100px;
+}
+.buttonContainer button{
+    font-size: 18px;
+    background-color: rgb(54, 54, 54);
+    color: burlywood;
+    border: 1px solid burlywood;
+    border-radius: 12px;
+    width: 150px;
+    height: 35px;
+    transition: 0.5s;
+}
+.buttonContainer button:hover{
+    background-color: burlywood;
+    color: rgb(54, 54, 54);
+}
+/* ----------------------------Footer------------------------------ */
+
+.footerBlock{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 10px 0;
+    background-color: burlywood;
+    border-radius: 10px;
+}
+.footerBlock p{
+    font-size: 20px;
+    color: rgb(54, 54, 54);
+}
+.footerBlockItem{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
