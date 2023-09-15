@@ -1,0 +1,16 @@
+self.add_function()
+
+    def add_function(self):
+        self.button_0.clicked.connect(lambda: self.write_number(self.button_0))
+        self.button_1.clicked.connect(lambda: self.write_number(self.button_1))
+        self.button_2.clicked.connect(lambda: self.write_number(self.button_2))
+        self.button_3.clicked.connect(lambda: self.write_number(self.button_3))
+        self.button_4.clicked.connect(lambda: self.write_number(self.button_4))
+        self.button_5.clicked.connect(lambda: self.write_number(self.button_5))
+        self.button_6.clicked.connect(lambda: self.write_number(self.button_6))
+        self.button_7.clicked.connect(lambda: self.write_number(self.button_7))
+        self.button_8.clicked.connect(lambda: self.write_number(self.button_8))
+        self.button_9.clicked.connect(lambda: self.write_number(self.button_9))
+
+    def write_number(self, number):
+        print(number)
