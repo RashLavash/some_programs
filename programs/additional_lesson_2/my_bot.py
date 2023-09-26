@@ -1,4 +1,4 @@
-# 6612992149:AAGzRrZwwf1iYjUyJA2O_MmxTGoFJWF-XW8
+
 
 
 # Bot()
@@ -8,7 +8,7 @@ USER_ID = 1711747429
 
 
 
-bot = Bot(token='6612992149:AAGzRrZwwf1iYjUyJA2O_MmxTGoFJWF-XW8')
+bot = Bot(token='<your token>')
 massage = 'Salamaleykum'
 bot.send_message(USER_ID, massage)
 
