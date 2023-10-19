@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    {% block content %}
+        {% block table_content %}
+        <ul>
+            {% for li in my_list -%}
+            <li>{{ li }}</li>
+            {% endfor -%}
+        </ul>
+        {% endblock table_content %}
+    {% endblock content %}
+</body>
+</html>

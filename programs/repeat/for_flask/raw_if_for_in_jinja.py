@@ -31,5 +31,34 @@ msg = tm.render(link=link) # получившаяся белеверда ото�
 
 # print(msg)
 
+cityes = [
+    {'id': 1, 'city': 'Москва'},
+    {'id': 5, 'city': 'Тверь'},
+    {'id': 7, 'city': 'Минск'},
+    {'id': 8, 'city': 'Смоленск'},
+    {'id': 11, 'city': 'Калуга'},
+]
 
 
+# {% for ... in ... %} ... {% endfor %} - переборка элементов 
+# {% if ... %} ... {% elif %} ... {% else %} ... {% endif %} - шаблон условия
+
+# С помощью минуса перед знаком % убираем лишние переносы ( -% )
+cityes_link = '''
+<select name="cityes">
+{% for city in cityes -%}
+{% if city.id > 6 -%} 
+    <option value="{{ city['id'] }}">{{ city['city'] }}</option>
+{% elif city.city == 'Москва' -%}
+    <option>{{ city['city'] }}</option>
+{% else -%}
+    <p>{{ city['city'] }}</p>
+{% endif -%}
+{% endfor -%}   
+</select>
+'''
+
+tm = Template(cityes_link)
+msg = tm.render(cityes = cityes)
+
+print(msg)

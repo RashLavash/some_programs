@@ -24,7 +24,7 @@ def run():
         if stats.run_game:
             mega_gun.update_gun()
             controls.update_screen(bg_color, screen, stats, score, mega_gun, aliens, bullets) 
-            controls.update_bullets(screen,stats, score, aliens, bullets)
+            controls.update_bullets(screen, stats, score, aliens, bullets)
             controls.update_aliens(stats, screen, score, mega_gun, aliens, bullets)
 
 

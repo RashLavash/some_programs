@@ -3,7 +3,7 @@ import pygame
 
 class Bullet(pygame.sprite.Sprite):
     def __init__(self, screen, mega_gun):
-        """создание пули в текущийпозиции пушки"""
+        """создание пули в текущей позиции пушки"""
         super(Bullet, self).__init__()
         self.screen = screen
         self.rect = pygame.Rect(0, 0, 50, 12)

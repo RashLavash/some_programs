@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% macro dialog_1(title, msg='') %}
+    <div class="doalog">
+        <p class="title">{{ title }}</p>
+        <p class="message">{{ msg }}</p>
+    </div>
+    {% endmacro %}
+</body>
+</html>
