@@ -1,0 +1,15 @@
+{% extends 'connecting_resource.html' %}
+
+{% block content %}
+{{ super() }}
+{% for categoryes, message in get_flashed_messages(True) %} <!-- переборка полученных с помощью get_flashed_messages() мгновенных сообщений  -->
+<div class="flash {{ categoryes }}">{{ message }}</div> <!-- после задания класса, через пробел указываем нужную категорию для определенного стиля, в нашем случае success и error -->
+{% endfor %}
+<form action="/contact" method="post" class="form_contact">
+    <p class="form_item_1"><label for="user_name" class="item_1">Введите ваше имя:</label> <input type="text" name="user_name" value="" required></p>
+    <p class="form_item_2"><label for="user_mail" class="item_2">Введите вашу почту:</label> <input type="text" name="user_mail" value="" required></p>
+    <p><label class="item_3">Сообщение:</label></p>
+    <p class="form_item_3"><textarea name="message" cols="40" rows="7"></textarea></p>
+    <p><input type="submit" value="Отправить"></p>
+</form>
+{% endblock content %}
