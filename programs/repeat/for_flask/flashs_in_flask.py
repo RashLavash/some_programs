@@ -5,7 +5,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'sldkfkfcmei45nknl3kn5kl;'
 
 menu = [
-    {"name": "Установка", "url": "install_flask",},
+    {"name": "Установка", "url": "install_flask"},
     {"name": "Первое приложение", "url": "first_app"},
     {"name": "Обратная связь", "url": "contact"}
 ]

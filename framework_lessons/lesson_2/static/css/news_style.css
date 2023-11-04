@@ -1,0 +1,49 @@
+.form_block{
+    margin: 0 auto;
+    width: 700px;
+    padding: 10px;
+    border: 5px solid rgba(255, 0, 0, 0.516);
+}
+
+.title{
+    width: 700px;
+    height: 200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 0, 0, 0.516);
+}
+
+.title h1{
+    color: blue;
+}
+.add_news_form{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+.add_news_form p:nth-child(2){
+    display: flex;
+    flex-direction: column;
+}
+
+.add_news_form label{
+    margin-right: 15px;
+}
+
+.write_article textarea{
+    width: 500px;
+    height: 300px;
+}
+
+.searching{
+    display: flex;
+    flex-direction: column;
+}
+
+.searching input{
+    width: 200px;
+}

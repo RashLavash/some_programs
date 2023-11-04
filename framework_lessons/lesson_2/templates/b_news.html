@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/news_style.css') }}">
+    <title>Статьи авторов</title>
+</head>
+<body>
+    <h1>Выберите автора</h1>
+    <form action="/news" enctype="multipart/form-data" method="post" class="search_news_form">
+        <p class="searching">
+            <label for="search_author">Введите имя автора, статью которого хотите прочитать</label>
+            <input type="text" name="search_author">
+        </p>
+        <p><input type="submit" value=" Поиск "></p>
+    </form>
+</body>
+</html>
