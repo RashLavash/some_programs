@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content_block">
+    {% if info_list %}
+        <h1 class="news_title">Срочные новости!</h1>
+        <div class="news_content">
+            <div class="article_card_conteiner">
+                {% for card in info_list %}    
+                    <div class="article_card">
+                        <div class="img"><img src="{{ url_for('static', filename='img/') }}" alt="Картинка"></div>
+                        <div class="article_card_info">
+                            <div class="article_card_title"><p>{{ card.title }}</p></div>
+                            <div class="article_card_item"><p>{{ card.article }}</p></div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        <h1 class="news_title">Новостей нет!</h1>
+    {% endif %}
+</div>
+{% endblock content %}

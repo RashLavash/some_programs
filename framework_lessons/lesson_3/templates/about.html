@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+О нас
+{% endblock title %}
+
+{% block content %}
+{% if staff %}
+    {% for worker in staff %}
+        <p>Наш работник {{ worker }}</p>
+        {% if loop.first %}
+            <div>Лучший работник года</div>
+        {% elif loop.last %}
+            <br>{{ loop.index }}    
+        {% endif %}
+
+    {% endfor %}
+{% else %}
+    <div>У нас нет работников</div>
+{% endif %}
+{% endblock content %}

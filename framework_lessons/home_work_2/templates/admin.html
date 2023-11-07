@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="content_block">
+        <div class="form_container">
+            <form action="/admin" method="post" enctype="multipart/form-data" class="add_staff_form">
+
+                <p class="form_item">
+                    <label for="user_name">Введите ваше ФИО</label>
+                    <input type="text" name="user_name" class="user_fio" required>
+                </p>
+
+                <p class="form_item">
+                    <label for="user_age">Укажите свой возраст</label>
+                    <input type="number" name="user_age" class="user_age" required>
+                </p>
+
+                <div class="gender_text"><p>Укажите свой пол</p></div>
+                <div class="gender_container">
+                    <p><input type="radio" value="{{ male_list.male }}" name="user_gender" id="male"></p>
+                    <p><label for="male">Мужской</label></p>
+                    <p><input type="radio" value="{{ male_list.female }}" name="user_gender" id="female"></p>
+                    <p><label for="female">Женский</label></p>
+                </div>
+
+                <div class="staff_buttons">
+                    <div class="btn_submit"><input type="submit" value="Добавить работника" name="get_value"></div>
+                    <div class="btn_reset"><input type="reset" value=" Сбросить "></div>
+                </div>
+            </form>
+
+            <form action="/admin" method="post" enctype="multipart/form-data" class="add_article_form">
+
+                <div class="title_article">
+                    <p><label for="title_article">Придумайте название вашей статьи</label></p>
+                    <p><input type="text" name="title_article" id="title_article"></p>
+                </div>
+                <div class="article_item">
+                    <p><label for="article_text">Напишите содержание вашей статьи</label></p>
+                    <textarea name="article_text" id="article_text"></textarea>
+                </div>
+
+                <div class="article_buttons">
+                    <div class="btn_submit"><input type="submit" value="Добавить статью" name="get_value"></div>
+                    <div class="btn_reset"><input type="reset" value=" Сбросить "></div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+{% endblock content %}
+

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="content_block">
+        {% if staff_list %}
+            <div class="staff_title"><h1>Наши работники!</h1></div>
+            <div class="about_content">
+                <div class="staff_card_container">
+                    {% for card in staff_list %}
+                        <div class="staff_card">
+                            <p>{{ card.staff }} :</p>
+                            <p>Возраст {{ card.staff_age }} лет</p>
+                            <p>Пол {{ card.staff_gender }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% else %}
+            <div class="staff_title"><h1>Работники отсутствуют.</h1></div>
+        {% endif %}
+    </div>
+
+{% endblock content %}

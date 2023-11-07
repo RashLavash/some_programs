@@ -1,0 +1,207 @@
+@font-face{
+    font-family: 'My Fonts';
+    src: url(../fonts/RobotoSlab-VariableFont_wght.ttf);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body{
+    height: 100%;
+    background-color: rgb(0, 21, 255);
+}
+                                        /* Оболочка */
+.wrapper{
+    width: 1048px;
+    height: 100%;
+    margin: 0 auto;
+    background-color: rgb(236, 235, 235);
+}
+                                        /* Шапка сайта */
+.header_conteiner{
+    height: 80px;
+    background-color: chartreuse;
+}
+
+.header{
+    height: 100%;
+}
+                                        /* Навигационное меню */
+.nav_menu{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item_list{
+    width: 50%;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+.item a{
+    text-decoration: none;
+    font-family: 'My Fonts';
+    color: black;
+}
+                                        /* Содержимое сайта */
+.content_block{
+    padding: 10px;
+}
+                                        /* Главная страница */
+.griteeng_text{
+    display: flex;
+    justify-content: center;
+}
+
+                                        /* Страница новостей */
+.news_title{
+    display: flex;
+    justify-content: center;
+    font-family: 'My Fonts';
+}
+                                        /* Страница о нас */
+.staff_title{
+    display: flex;
+    justify-content: center;
+    font-family: 'My Fonts';
+}
+
+.about_content{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.staff_card_container{
+    display: flex;  
+    width: 70%;
+    flex-wrap: wrap;
+}
+
+
+.staff_card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'My Fonts';
+    width: 45%;
+    height: 80px;
+    padding: 5px;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: 10px 10px 8px 5px black;
+}
+
+.staff_card:nth-child(2n + 1){
+    margin-right: 5%;
+    margin-bottom: 5%;
+}
+                                    /* Формы добавления сотрудников */
+.form_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+                                    /* Форма добавления работника */
+.add_staff_form{
+    font-family: 'My Fonts';
+    width: 50%;
+    padding: 20px;
+    border-radius: 40px;
+    background-color: rgb(30, 139, 255);
+    box-shadow: 10px 10px 8px 5px black;
+    margin-bottom: 70px;
+}
+
+.form_item{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 8px;
+}
+
+.user_fio{
+    width: 200px;
+    height: 25px;
+}
+
+.user_age{
+    width: 50px;
+    height: 25px;
+}
+
+.gender_container{
+    margin-bottom: 8px;
+    display: flex;
+}
+
+.gender_container input{
+    margin-right: 5px;
+}
+
+.gender_container label:nth-child(1){
+    margin-right: 5px;
+}
+
+.staff_buttons{
+    display: flex;
+}
+
+.staff_buttons input{
+    font-family: 'My Fonts';
+    width: 155px;
+    height: 30px;
+    border-radius: 10px;
+}
+
+.staff_buttons input:nth-child(1){
+    margin-right: 15px;
+}
+
+                                    /* Форма добавления cnfnmb */
+
+.add_article_form{
+    font-family: 'My Fonts';
+    width: 50%;
+    padding: 20px;
+    border-radius: 40px;
+    background-color: rgb(30, 139, 255);
+    box-shadow: 10px 10px 8px 5px black;
+    margin-bottom: 70px;
+}
+
+.title_article, .article_item{
+    margin-bottom: 8px;
+}
+
+.title_article input{
+    width: 200px;
+    height: 25px;
+}
+
+.article_item textarea{
+    width: 100%;
+    height: 150px;
+}
+
+.article_buttons{
+    display: flex;
+}
+
+.article_buttons input{
+    font-family: 'My Fonts';
+    width: 155px;
+    height: 30px;
+    border-radius: 10px;
+}
+
+.article_buttons input:nth-child(1){
+    margin-right: 15px;
+}
+
