@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Публикация новостей
+{% endblock title %}
+
+{% block content %}
+
+    <div class="content_block">
+        <div class="form_container">
+            <form class="public_form" action="/public_news" method="post" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+                <div class="form_block">
+                    <p>{{ form.author_name.label(for="author_name") }}</p>
+                    <p class="input">{{ form.author_name }}</p>
+                </div>
+                <div class="form_block">
+                    <p>{{ form.author_email.label(for="author_email") }}</p>
+                    <p class="input">{{ form.author_email }}</p>
+                </div>
+                <div class="form_block">
+                    <p>{{ form.public_title.label(for="public_title") }}</p>
+                    <p class="input">{{ form.public_title }}</p>
+                </div>
+                <div class="form_block">
+                    <p>{{ form.public_text.label(for="public_text") }}</p>
+                    <p class="text_area">{{ form.public_text }}</p>
+                </div>
+                <div class="form_block">
+                    <p>{{ form.date_public.label(for="date_public") }}</p>
+                    <p>{{ form.date_public }}</p>
+                </div>
+                <div class="buttons_block">
+                    {{ form.submit }}
+                    <input type="reset" value="Очистить форму">
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock content %}

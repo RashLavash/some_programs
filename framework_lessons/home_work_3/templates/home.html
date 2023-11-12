@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="content_block">
+        {% if db_response %}
+            <div class="item_container">
+                <div class="card_container">
+                    {% for elem in db_response %}
+                        <div class="card">
+                            <div class="card_item">
+                                <p>Автор : {{ elem.author_name }}</p>
+                            </div>
+                            <div class="card_item">
+                                <p>Email : {{ elem.author_email }}</p>
+                            </div>
+                            <div class="card_item">
+                                <p>Название статьи: {{ elem.public_title }}</p>
+                            </div>
+                            <div class="card_item">
+                                <p>Статья : {{ elem.public_text }}</p>
+                            </div>
+                            <div class="card_item">
+                                <p>Дата публикации : {{ elem.date_public }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% else %}
+            <div class="message">
+                <h1>Публикаций нет!</h1>
+            </div>
+        {% endif %}
+    </div> 
+
+{% endblock content %}
+

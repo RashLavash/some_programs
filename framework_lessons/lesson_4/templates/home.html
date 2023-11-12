@@ -1,0 +1,24 @@
+{% extends 'base2.html' %}
+
+{% block title %}
+Главная
+{% endblock title %}
+
+
+{% block content %}
+    <form action="/" method="post">
+        {{ form.hidden_tag() }}
+        <div class="form_block">
+            {{ form.name.label(class="form_input_label") }}
+            {{ form.name(class="form_input") }}
+        </div>
+        
+        </div>
+        <div class="form_block">
+            {{ form.text.label(class="form_input_label") }}
+            {{ form.text(class="form_input") }}
+        </div>
+
+        <button type="submit" class="btn">Отправить</button>
+    </form>
+{% endblock content %}
