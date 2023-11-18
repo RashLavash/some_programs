@@ -77,6 +77,7 @@ def home():
     db_response = cursor.fetchall()
 
     con.commit()
+    con.close()
 
     return render_template('home.html', nav_list=nav_list, db_response=db_response)
 
@@ -96,8 +97,11 @@ def public_news():
         public_text = my_form.public_text.data
 
         insert_for_author_publics_db(
-            author_name=author_name, author_email=author_email, date_public=date_public,
-            public_title=public_title, public_text=public_text
+            author_name=author_name,
+            author_email=author_email,
+            date_public=date_public,
+            public_title=public_title,
+            public_text=public_text
         )
 
         return redirect(url_for('home'))

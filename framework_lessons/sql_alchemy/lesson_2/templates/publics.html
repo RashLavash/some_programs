@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="form_container">
+            <form class="add_article_form" action="/public_news" enctype="multipart/form-data" method="post">
+                {{ form.hidden_tag() }}
+                <div class="form_block">
+                    <p>{{ form.author_name.label(for="author_name") }}</p>
+                    <p>{{ form.author_name }}</p>
+                </div>
+                <div class="form_block">
+                    <p>{{ form.author_email.label(for="author_email") }}</p>
+                    <p>{{ form.author_email }}</p>
+                </div>
+                <div class="form_block">
+                    <p>{{ form.public_title.label(for="public_title") }}</p>
+                    <p>{{ form.public_title }}</p>
+                </div>
+                <div class="form_block">
+                    <p>{{ form.public_text.label(for="public_text") }}</p>
+                    <p>{{ form.public_text }}</p>
+                </div>
+                <div class="form_block">
+                    <p>{{ form.date_public.label(for="date_public") }}</p>
+                    <p>{{ form.date_public }}</p>
+
+                <div class="btn_container">
+                    {{ form.submit_btn }}
+                </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock content %}

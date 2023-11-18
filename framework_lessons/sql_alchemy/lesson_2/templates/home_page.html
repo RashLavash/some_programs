@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        {% if db_results %}
+            <div class="card_container">
+                {% for elem in db_results %}
+                    <div class="card">
+                        <div class="card_item">
+                            <p>
+                                Автор : {{ elem[1] }}
+                            </p>
+                        </div>
+                        <div class="card_item">
+                            <p>
+                                Почта автора : {{ elem[2] }}
+                            </p>
+                        </div>
+                        <div class="card_item">
+                            <p>
+                                Название статьи: {{ elem[3] }}
+                            </p>
+                        </div>
+                        <div class="card_item">
+                            <p>
+                                Содержание статьи : {{ elem[4] }}
+                            </p>
+                        </div>
+                        <div class="card_item">
+                            <p>
+                                Дата публикации: {{ elem[5] }}
+                            </p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="no_find_text">
+                <p>
+                    <h1>
+                        Страница пуста!
+                    </h1>
+                </p>
+            </div>
+        {% endif %}
+    </div>
+
+{% endblock content %}

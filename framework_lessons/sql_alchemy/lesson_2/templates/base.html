@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>{% block title %}{% endblock title %}</title>
+</head>
+<body>
+    <div class="wrapper">
+        {% block header %}
+            <header>
+                <div class="header_container">
+                    <nav>
+                        <ul class="nav_list">
+                            {% for item in nav_list %}
+                                <li><a href="{{ item.url }}">{{ item.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+        {% endblock header %}
+
+
+        
+        <main>
+            <div class="main_conteiner">
+                {% block content %}
+                
+                {% endblock content %}
+            </div>
+        </main>
+
+
+        {% block footer %}
+            <footer>
+                <div class="footer_container">
+                    <p class="name">
+                        {{ footer_name }}
+                    </p>
+                </div>
+            </footer>
+        {% endblock footer %}
+    </div>
+</body>
+</html>

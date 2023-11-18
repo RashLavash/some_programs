@@ -1,10 +1,12 @@
 import sqlalchemy as db
 
 engine = db.create_engine(
-    'sqlite:///framework_lessons/sql_alchemy/db/products_sqlalchemy.db'
+    'sqlite:///framework_lessons/sql_alchemy/lesson_1/db/products_sqlalchemy.db'
 )
 
-con = engine.connect()
+def connect_db():
+    con = engine.connect()
+    return con 
 
 metadata = db.MetaData()
 
@@ -17,19 +19,27 @@ products = db.Table('products', metadata,
 
 metadata.create_all(engine)
 
-insertion_query = products.insert().values([
-    {"product_name": "bananas", "supplier_name": "United Bananas", "price_per_tonne": 7000},
-    {"product_name": "avacado", "supplier_name": "United Avacados", "price_per_tonne": 12000},
-    {"product_name": "tomatoes", "supplier_name": "United Tomatoes", "price_per_tonne": 7000}
-])
+num = input()
 
-# con.execute(insertion_query)
-# con.commit()
+if num == '1':
+    print(num)
+    con = connect_db()
+    insertion_query = products.insert().values([
+        {"product_name": "bananas", "supplier_name": "United Bananas", "price_per_tonne": 7000},
+        {"product_name": "avacado", "supplier_name": "United Avacados", "price_per_tonne": 12000},
+        {"product_name": "tomatoes", "supplier_name": "United Tomatoes", "price_per_tonne": 7000}
+    ])
+
+    con.execute(insertion_query)
+    con.commit()
+    con.close()
 
 # select_all_query = db.select(products)
 # select_all_results = con.execute(select_all_query)
 
-# print(select_all_results.fetchall())
+# results = select_all_results.fetchall()
+
+# # print(results)
 
 # select_price_query = db.select(products).where(products.columns.price_per_tonne==12000)
 # select_price_results = con.execute(select_price_query)
@@ -48,11 +58,11 @@ insertion_query = products.insert().values([
 
 # DELETE
 
-delete_query = db.delete(products).where(products.columns.product_name == 'bananas')
-con.execute(delete_query)
+# delete_query = db.delete(products).where(products.columns.product_name == 'bananas')
+# con.execute(delete_query)
 
-select_all_query = db.select(products)
-select_all_results = con.execute(select_all_query)
+# select_all_query = db.select(products)
+# select_all_results = con.execute(select_all_query)
 
-print(select_all_results.fetchall())
+# print(select_all_results.fetchall())
 
