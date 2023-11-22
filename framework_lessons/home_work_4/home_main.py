@@ -3,6 +3,8 @@ from flask import render_template, redirect, url_for
 
 from flask_wtf.csrf import CSRFProtect
 
+from flask_sqlalchemy import SQLAlchemy
+
 import os
 from dotenv import load_dotenv
 
@@ -13,26 +15,34 @@ load_dotenv()
 
 SECRET_KEY = os.getenv('MY_SECRET_KEY')
 NAV_LIST = [
-    {"name": "Главная", "url": "home"}
+    {"name": "Главная", "url": "/home"},
+    {"name": "Добавить статью", "url": "/add_categories"}
 ]
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = SECRET_KEY
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///add_categorys.db'
 
+db = SQLAlchemy(app)
+
+class AddCategory(db.Model):
+    __tablename__ = 'add_category'
+    category_id = db.Column(db.Integer, primary_key=True)
+    category_name = db.Column(db.String(50))
+
 csrf = CSRFProtect(app)
 
 @app.route('/')
 @app.route('/home')
 def home():
-    return render_template('home.html', nav_list=NAV_LIST)
+
+    select_category = AddCategory.query.all()   
+
+    return render_template('home.html', nav_list=NAV_LIST, categories=select_category)
 
 
-@app.route('/add_categories')
+@app.route('/add_categories', methods=['GET', 'POST'])
 def add_categories():
-
-    from add_category import AddCategory, db
-
 
     form = AddCategoryForm()
 
@@ -48,13 +58,21 @@ def add_categories():
             redirect(url_for('home'))
         except:
             return 'При добавлении статьи произошла ошибка'
+        
+    select_category = AddCategory.query.all()
     
-    return render_template('add_categories.html', nav_list=NAV_LIST)
+    return render_template('add_categories.html', nav_list=NAV_LIST, categories=select_category, form=form)
 
 
 @app.route('/categories/<categories_id>')
 def category(categories_id):
-    pass
+    print(categories_id)
+    articles = AddCategory.query.get(categories_id)
+    select_category = AddCategory.query.all()
+
+    return render_template('category.html', nav_list=NAV_LIST, articles=articles, categories=select_category)
+
+
     # Получилось передать в динамический аргумент данные с помощью шаблонизации, см. в base.html
     # Теперь нужно использовать переданный в url строку динамический параметр, который является айдишником категории
     # сделай select запрос в бд, в которой хранятся категории для шапки, который вернет категорию по айди,

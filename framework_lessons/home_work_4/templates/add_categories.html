@@ -1,1 +1,18 @@
 {% extends 'base.html' %}
+
+{% block content %}
+
+<div class="form_container">
+    <form action="/add_categories" method="post" class="add_category" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <div class="form_block">
+            <p>{{ form.category_name.label(for="category_name") }}</p>
+            <p>{{ form.category_name }}</p>
+        </div>
+        <div class="form_block">
+            <p>{{ form.submit }}</p>
+        </div>
+    </form>
+</div>
+
+{% endblock content %}

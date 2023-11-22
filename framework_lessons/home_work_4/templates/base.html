@@ -12,12 +12,12 @@
             <div class="header_container">
                 <nav>
                     <ul class="nav_list">
-                        {% if  %}
+                        {% if categories %}
                             {% for item in nav_list%}
                                 <li class="item"><a href="{{ item.url }}">{{ item.name }}</a></li>
                             {% endfor %}
-                            {% for categoties_item in  %}
-                                <li class="item"><a href="/categories/{{  }}">{{ categoties_item. }}</a></li>
+                            {% for categories_item in categories %}
+                                <li class="item"><a href="/categories/{{ categories_item.category_id }}">{{ categories_item.category_name }}</a></li>
                             {% endfor %}
                         {% else %}
                             {% for item in nav_list%}
