@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Добавить пользователя
+{% endblock title %}
+
+{% block content %}
+
+    <div class="add_user_form_container">
+        <form action="/add_users" class="add_user">
+            {{ form.hidden_tag() }}
+            <div class="form_block">
+                <p>{{ form.user_name.label(for="user_name") }}</p>
+                <p>{{ form.user_name }}</p>
+            </div>
+            <div class="form_block">
+                <p>{{ form.user_age.label(for="user_age") }}</p>
+                <p>{{ form.user_age }}</p>
+            </div>
+            <div class="btn_block">
+                <p>{{ form.submit }}</p>
+                <p><input type="reset" value="Очистить"></p>
+            </div>
+        </form>
+    </div>
+
+{% endblock content %}

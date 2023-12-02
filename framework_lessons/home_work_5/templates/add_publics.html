@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Добавить публикацию
+{% endblock title %}
+
+{% block content %}
+
+    <div class="add_public_form_container">
+        <form action="/add_publics" method="post" class="add_public" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <div class="form_block">
+                <p>{{ form.public_title.label(for="public_title") }}</p>
+                <p>{{ form.public_title }}</p>
+            </div>
+            <div class="form_block">
+                <p>{{ form.public_text.label(for="public_text") }}</p>
+                <p>{{ form.public_text }}</p>
+            </div>
+            <div class="checkbox_block">
+                <p>{{ form.checkbox }}</p>
+                <p>{{ form.checkbox.label(for="checkbox") }}</p>
+            </div>
+            <div class="btn_block">
+                <div>{{ form.submit }}</div>
+                <div><input type="reset" value="Очистить"></div>
+            </div>
+        </form>
+    </div>
+
+{% endblock content %}

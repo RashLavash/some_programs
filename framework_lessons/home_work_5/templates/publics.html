@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Публикации
+{% endblock title %}
+
+{% block content %}
+
+    <div class="card_container">
+        {% if publics %}
+            {% for public in publics %}    
+                <div class="card">
+                    <div class="card_title">
+                        {{ public.public_title }}
+                    </div>
+                    <div class="card_item">
+                        {{ public.public_text }}
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <h1>Публикаций нет!</h1>
+        {% endif %}
+    </div>
+
+{% endblock content %}

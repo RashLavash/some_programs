@@ -1,0 +1,84 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body{
+    height: 100%;
+}
+
+.wrapper{
+    margin: 0 auto;
+    max-width: 1024px;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Шапка */
+
+header{
+    margin-bottom: 20px;
+    background-color: aqua;
+    border-radius: 0 0 12px 12px;
+}
+
+header, .header_container, nav, .nav_list{
+    width: 100%;
+    height: 100px;
+    display: flex;
+}
+
+.nav_list{
+    list-style-type: none;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.nav_list li a{
+    font-family: 'My Font';
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+}
+
+/* Контент */
+
+main{
+    flex: 1 1 auto;
+}
+
+.main_container{
+    display: flex;
+}
+
+/* Форма добавления статей */
+
+.checkbox_block{
+    display: flex;
+}
+
+.checkbox_block p:nth-child(1){
+    margin-right: 5px;
+}
+
+/* Футер */
+
+footer, .footer_container{
+    width: 100%;
+    height: 100px;
+    display: flex;
+}
+
+.footer_container{
+    justify-content: center;
+    align-items: center;
+    background-color: aqua;
+}
+
+.footer_container p{
+    font-size: 20px;
+}
