@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Все пользователи:</h1>
+    
+    <form action="/add_user" method="post">
+        <input type="text" name="user_name" placeholder="Имя">
+        <input type="text" name="user_surname" placeholder="Фамилия">
+        <input type="submit" value="Отправить">
+    </form>
+
+    <ol class="all_users">
+        {% for user in users %}
+            <li>{{ user.user_name }}{{ user.user_surname }}</li>
+        {% endfor %}
+    </ol>
+
+</body>
+</html>

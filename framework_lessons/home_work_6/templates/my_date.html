@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Date</title>
+</head>
+<body>
+
+    <h1>Мои даты</h1>
+
+    <form action="/my_date" method="post" enctype="multipart/form-data">
+        <input type="date" name="my_date" placeholder="Укажите дату">
+        <input type="submit" name="" value="Отправить">
+    </form>
+
+    <ol>
+        {% for date in my_date %}
+        <li>{{ date.date }}</li>
+        {% endfor %}
+    </ol>
+</body>
+</html>
