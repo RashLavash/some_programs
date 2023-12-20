@@ -9,9 +9,23 @@
     <h1>Все публикации:</h1>
     
     <form action="/posts" method="post" enctype="multipart/form-data">
-        <input type="text" name="user_title" >
-        <textarea name="user_text" cols="30" rows="10"></textarea>
-        <input type="submit" value="Отправить">
+        {{ form.hidden_tag() }}
+
+        <div class="form_block">
+            {{ form.title.label() }}
+            {{ form.title }}
+        </div>
+        <div class="form_block">
+            {{ form.text.label() }}
+            {{ form.text }}
+        </div>
+        <div class="form_block">
+            {{ form.author.label() }}
+            {{ form.author }}
+        </div>
+        <div class="btn_block">
+            {{ form.submit }}
+        </div>
     </form>
 
     <ol class="all_users">
@@ -20,6 +34,5 @@
             <li>{{ post.text }}</li>
         {% endfor %}
     </ol>
-
 </body>
 </html>

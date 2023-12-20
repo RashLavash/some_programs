@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/users" method="post">
+        <div>{{ form.hidden_tag() }}</div>
+
+        {% for elem in form  if elem.name != 'csrf_token' %}
+            <div>
+                {{ elem.label() }}
+                {{ elem() }}
+            </div>
+        {% endfor %}
+
+        <button type="reset">Очистить</button>
+            
+    </form>
+    {% for user in users %}
+        <div>
+            {{ user.user_name }}
+            {{ user.age }}
+            {{ user.address }}
+        </div>
+    {% endfor %}
+</body>
+</html>

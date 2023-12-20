@@ -6,7 +6,6 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///some.db'
 
 
-
 metadata = MetaData(
     naming_convention = {
         "ix": 'ix_%(column_0_label)s',

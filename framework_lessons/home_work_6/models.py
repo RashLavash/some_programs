@@ -6,7 +6,7 @@ class Users(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_name = db.Column(db.String(50), unique=True, nullable=False)
-    user_surname = db.Column(db.String(50), unique=True, nullable=False)
+    user_surname = db.Column(db.String(50), unique=True, nullable=True)
 
     def __repr__(self):
         return f"User(id = {self.id}, user_name = {self.user_name})"

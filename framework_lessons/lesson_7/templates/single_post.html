@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Post</title>
+</head>
+<body>
+    {% if post %}
+        <h1>{{ post.title }}</h1>
+        <div>{{ post.text }}</div>
+    {% else %}
+        <h1>Публикаций нет</h1>
+    {% endif %}
+</body>
+</html>
