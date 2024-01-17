@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+aside{
+    float: left;
+    width: 28%;
+    height: 100vh;
+    padding: 2.5%;
+    border-right: 5px solid black;
+}
+
+aside img{
+    width: 100px;
+    float: left;
+}
+
+aside .logo{
+    font-size: 40px;
+    font-weight: bold;
+    margin-left: 10px;
+
+}
