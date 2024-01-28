@@ -23,7 +23,7 @@ class Scores():
         self.score_rect.top = 20
 
     def image_high_score(self):
-        """преобрахование рекорда в графическое изображение"""
+        """преобразование рекорда в графическое изображение"""
         self.high_score_image = self.font.render(str(self.stats.high_score), True, self.text_color, (0, 0, 0))
         self.high_score_rect = self.high_score_image.get_rect()
         self.high_score_rect.centerx = self.screen_rect.centerx

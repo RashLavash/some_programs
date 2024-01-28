@@ -6,7 +6,7 @@ class Mega_alien(pygame.sprite.Sprite):
         """инициализация и придание начальной позиции"""
         super(Mega_alien, self).__init__()
         self.screen = screen
-        self.image = pygame.image.load('my_game/images/mega_alien.png')
+        self.image = pygame.image.load('images/mega_alien.png')
         self.rect = self.image.get_rect()
         self.rect.x = self.rect.width
         self.rect.y = self.rect.height

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workers</title>
+</head>
+<body>
+    <a href="{% url 'my_app_1:index' %}">Главная</a>
+    <a href="{% url 'my_app_1:add_worker' %}">Добавить работника</a>
+    <ul class="all_workers">
+        <h2>Работники</h2>
+        {% for worker in workers_data %}
+            <div>
+                <li>{{ worker.name }}</li>
+                <li>{{ worker.second_name }}</li>
+                <li>{{ worker.salary }}</li>
+            </div>
+        {% endfor %}
+    </ul>
+    <ul class="workers_salary">
+        <h2>Name : Lavash</h2>
+        {% for worker in workers_salary %}  
+            <div>
+                <li>{{ worker.name }}</li>
+                <li>{{ worker.second_name }}</li>
+                <li>{{ worker.salary }}</li>
+            </div> 
+        {% endfor %}
+    </ul>
+
+    <ul class="changed_workers">
+        <h2>Changed workers</h2>
+        {% for worker in changed_workers %}  
+            <div>
+                <li>{{ worker.name }}</li>
+                <li>{{ worker.second_name }}</li>
+                <li>{{ worker.salary }}</li>
+            </div> 
+        {% endfor %}
+    </ul>
+</body>
+</html>

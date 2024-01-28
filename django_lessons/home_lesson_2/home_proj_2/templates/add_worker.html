@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AddWorker</title>
+</head>
+<body>
+
+    <form action="{% url 'my_app_1:add_worker' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Отправить</button>
+    </form>
+
+    <a href="{% url 'my_app_1:index' %}">Главная</a>
+    <a href="{% url 'my_app_1:workers' %}">Список работников</a>
+</body>
+</html>

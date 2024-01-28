@@ -7,7 +7,7 @@ class Mega_gun(Sprite):
         """инициализация пушки"""
         super(Mega_gun, self).__init__()
         self.screen = screen
-        self.image = pygame.image.load('my_game/images/mega_gun.png')
+        self.image = pygame.image.load('images/mega_gun.png')
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
         self.rect.centerx = self.screen_rect.centerx
