@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Отдельная статья
+{% endblock title %}
+
+{% block content %}
+<p>Публикация № {{ user_id }}</p>
+<a href="{% url 'main:main' %}">Главная</a>
+<a href="{% url 'posts:posts_list' %}">Список публикаций</a>
+{% endblock content %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Список статей
+{% endblock title %}
+
+{% block content %}
+<h1>Список статей</h1>
+<a href="{% url 'main:main' %}">Главня</a>
+<a href="{% url 'posts:post_detail' current_id %}">Отдельная статья</a>
+{% endblock content %}
+
