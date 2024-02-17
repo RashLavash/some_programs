@@ -26,7 +26,7 @@ class PostAddView(LoginRequiredMixin, CreateView):
     model = Post
     template_name = 'posts/post_form.html'
     success_url = reverse_lazy('posts:post_list')
-    fields = ['title', 'text']
+    fields = ['title', 'text', 'image']
 
     def form_valid(self, form):
         # Зададим создаваемым публикациям в качестве автора
@@ -59,3 +59,8 @@ class PostAddView(LoginRequiredMixin, CreateView):
 #         post = form.save(commit=False)
 #         post.author = request.user
 #         post.save()
+
+
+
+
+

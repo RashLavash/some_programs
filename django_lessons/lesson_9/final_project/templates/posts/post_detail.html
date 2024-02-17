@@ -7,5 +7,8 @@
         <p>{{ post.text }}</p>
         <p>Автор {{ post.author.username }}</p>
         <p>{{ post.pub_date }}</p>
+        <p>
+            <img src="{{ post.image.url }}" alt="Котик">
+        </p>
     </div>
 {% endblock content %}
