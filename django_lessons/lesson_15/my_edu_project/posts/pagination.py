@@ -24,10 +24,10 @@ class PostPagination(PageNumberPagination):
             'data': data
         })
     
-    def paginate_queryset(self, queryset, request, view=None):
-        page_size = self.get_page_size(request)
-        paginator = self.django_paginator_class(queryset, page_size)
-        page_number = request.query_params.get(self.page_query_param)
-        return paginator.page(page_number)
+    # def paginate_queryset(self, queryset, request, view=None):
+    #     page_size = self.get_page_size(request)
+    #     paginator = self.django_paginator_class(queryset, page_size)
+    #     page_number = request.query_params.get(self.page_query_param)
+    #     return paginator.page(page_number)
 
 
