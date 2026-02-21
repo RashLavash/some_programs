@@ -4,7 +4,7 @@ from pygame.sprite import Sprite
 
 class Mega_gun(Sprite):
     def __init__(self, screen):
-        """инициализация пушки"""
+        """инициализация космического корабля"""
         super(Mega_gun, self).__init__()
         self.screen = screen
         self.image = pygame.image.load('images/mega_gun.png')

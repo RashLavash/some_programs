@@ -102,7 +102,7 @@ def create_army(screen, aliens):
     alien_height = alien.rect.height
     number_alien_x = int((700 - 2 * alien_width) / alien_width)
     alien_height = alien.rect.height
-    number_alien_y = int((800 - 100 - 2 * alien_height) / alien_height)
+    number_alien_y = int((700 - 100 - 2 * alien_height) / alien_height)
 
     for row_number in range(number_alien_y - 1):
         for alien_number in range(number_alien_x):
@@ -118,6 +118,6 @@ def chek_high_score(stats, score):
     if stats.score > stats.high_score:
         stats.high_score = stats.score
         score.image_high_score()
-        with open('my_game/high_score.txt', 'w') as file:
+        with open('high_score.txt', 'w') as file:
             file.write(str(stats.high_score))
 

@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Герой-секция -->
+<section class="hero">
+    <div class="container">
+        <h1>Лучшие автомобили по выгодным ценам</h1>
+        <p>Широкий выбор автомобилей с пробегом и с гарантией. Профессиональный подбор и быстрое оформление</p>
+        <a href="{% url 'cars:catalog' %}" class="btn btn-primary btn-lg">
+            <i class="fas fa-search me-2"></i>Подобрать автомобиль
+        </a>
+    </div>
+</section>
+
+<!-- Преимущества -->
+<section class="advantages">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 advantage-item">
+                <div class="advantage-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h5>Гарантия качества</h5>
+                <p>Тщательная проверка каждого автомобиля</p>
+            </div>
+            <div class="col-md-3 advantage-item">
+                <div class="advantage-icon">
+                    <i class="fas fa-tags"></i>
+                </div>
+                <h5>Лучшие цены</h5>
+                <p>Конкурентные цены и специальные предложения</p>
+            </div>
+            <div class="col-md-3 advantage-item">
+                <div class="advantage-icon">
+                    <i class="fas fa-wrench"></i>
+                </div>
+                <h5>Сервис</h5>
+                <p>Полное обслуживание и консультации</p>
+            </div>
+            <div class="col-md-3 advantage-item">
+                <div class="advantage-icon">
+                    <i class="fas fa-credit-card"></i>
+                </div>
+                <h5>Финансы</h5>
+                <p>Помощь в оформлении кредита и страховки</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Последние поступления -->
+<section class="catalog-header">
+    <div class="container">
+        <h2 class="mb-4">Последние поступления</h2>
+        <div class="car-grid">
+            {% for car in cars %}
+            <div class="car-card">
+                <a href="{% url 'cars:car_detail' car.pk %}">
+                    {% if car.get_first_image %}
+                    <img src="{{ car.get_first_image.image.url }}" alt="{{ car }}" class="car-image">
+                    {% else %}
+                    <img src="https://via.placeholder.com/300x200" alt="Нет изображения" class="car-image">
+                    {% endif %}
+                    <div class="car-info">
+                        <h5 class="car-title">{{ car.brand.name }} {{ car.model }}</h5>
+                        <p class="car-specs">
+                            <i class="fas fa-calendar me-2"></i>{{ car.year }} г. 
+                            <i class="fas fa-gas-pump me-2"></i>{{ car.get_engine_type_display }}
+                            <i class="fas fa-cog me-2"></i>{{ car.get_transmission_display }}
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="car-price">{{ car.price }} ₽</span>
+                            <button class="btn btn-primary">
+                                <i class="fas fa-eye me-2"></i>Подробнее
+                            </button>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% empty %}
+            <div class="col-12">
+                <p class="text-muted">Пока нет доступных автомобилей.</p>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-4">
+            <a href="{% url 'cars:catalog' %}" class="btn btn-primary btn-lg">
+                <i class="fas fa-list me-2"></i>Весь каталог
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,173 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="catalog-header">
+    <div class="container">
+        <div class="row">
+            <!-- Фильтры -->
+            <div class="col-lg-3">
+                <div class="filter-sidebar">
+                    <h5 class="filter-title">Фильтры</h5>
+                    
+                    <form method="get" action="{% url 'cars:catalog' %}">
+                        <!-- Фильтр по цене -->
+                        <div class="mb-4">
+                            <h6>Цена</h6>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="price" value="1000000" id="price1" 
+                                    {% if price_filter == '1000000' %}checked{% endif %}>
+                                <label class="form-check-label" for="price1">
+                                    До 1 000 000 ₽
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="price" value="5000000" id="price2"
+                                    {% if price_filter == '5000000' %}checked{% endif %}>
+                                <label class="form-check-label" for="price2">
+                                    До 5 000 000 ₽
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="price" value="10000000" id="price3"
+                                    {% if price_filter == '10000000' %}checked{% endif %}>
+                                <label class="form-check-label" for="price3">
+                                    До 10 000 000 ₽
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="price" value="50000000" id="price4"
+                                    {% if price_filter == '50000000' %}checked{% endif %}>
+                                <label class="form-check-label" for="price4">
+                                    До 50 000 000 ₽
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Фильтр по маркам -->
+                        <div class="mb-4">
+                            <h6>Марки</h6>
+                            {% for brand in brands %}
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="brands" value="{{ brand.id }}" id="brand{{ brand.id }}"
+                                    {% if brand.id in brand_filter %}checked{% endif %}>
+                                <label class="form-check-label" for="brand{{ brand.id }}">
+                                    {{ brand.name }}
+                                </label>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-filter me-2"></i>Применить фильтры
+                            </button>
+                            <a href="{% url 'cars:catalog' %}" class="btn btn-outline-primary">
+                                <i class="fas fa-undo me-2"></i>Сбросить фильтры
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Автомобили -->
+            <div class="col-lg-9">
+                <!-- Поиск и сортировка -->
+                <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
+                    <div class="d-flex flex-wrap gap-2">
+                        <form method="get" action="{% url 'cars:catalog' %}" class="d-flex">
+                            <input type="hidden" name="price" value="{{ price_filter }}">
+                            {% for brand_id in brand_filter %}
+                            <input type="hidden" name="brands" value="{{ brand_id }}">
+                            {% endfor %}
+                            <div class="input-group">
+                                <input type="text" name="search" class="form-control" placeholder="Поиск по марке, модели..." 
+                                    value="{{ search_query }}">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <div class="dropdown">
+                        <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            Сортировка: 
+                            {% if sort_by == '-created_at' %}По дате{% elif sort_by == 'price' %}По цене (возрастание){% elif sort_by == '-price' %}По цене (убывание){% else %}По названию{% endif %}
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="?{% for key, value in request.GET.items %}{% if key != 'sort' %}{{ key }}={{ value }}&{% endif %}{% endfor %}sort=-created_at">По дате</a></li>
+                            <li><a class="dropdown-item" href="?{% for key, value in request.GET.items %}{% if key != 'sort' %}{{ key }}={{ value }}&{% endif %}{% endfor %}sort=price">По цене (возрастание)</a></li>
+                            <li><a class="dropdown-item" href="?{% for key, value in request.GET.items %}{% if key != 'sort' %}{{ key }}={{ value }}&{% endif %}{% endfor %}sort=-price">По цене (убывание)</a></li>
+                            <li><a class="dropdown-item" href="?{% for key, value in request.GET.items %}{% if key != 'sort' %}{{ key }}={{ value }}&{% endif %}{% endfor %}sort=model">По названию</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Сетка автомобилей -->
+                <div class="car-grid">
+                    {% for car in page_obj %}
+                    <div class="car-card">
+                        <a href="{% url 'cars:car_detail' car.pk %}">
+                            {% if car.get_first_image %}
+                            <img src="{{ car.get_first_image.image.url }}" alt="{{ car }}" class="car-image">
+                            {% else %}
+                            <img src="https://via.placeholder.com/300x200" alt="Нет изображения" class="car-image">
+                            {% endif %}
+                            <div class="car-info">
+                                <h5 class="car-title">{{ car.brand.name }} {{ car.model }}</h5>
+                                <p class="car-specs">
+                                    <i class="fas fa-calendar me-2"></i>{{ car.year }} г. 
+                                    <i class="fas fa-gas-pump me-2"></i>{{ car.get_engine_type_display }}
+                                    <i class="fas fa-cog me-2"></i>{{ car.get_transmission_display }}
+                                </p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="car-price">{{ car.price }} ₽</span>
+                                    <button class="btn btn-primary">
+                                        <i class="fas fa-eye me-2"></i>Подробнее
+                                    </button>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {% empty %}
+                    <div class="col-12">
+                        <p class="text-muted">По вашему запросу автомобилей не найдено.</p>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+                <!-- Пагинация -->
+                {% if page_obj.has_other_pages %}
+                <nav aria-label="Page navigation" class="mt-4">
+                    <ul class="pagination justify-content-center">
+                        {% if page_obj.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?{% for key, value in request.GET.items %}{% if key != 'page' %}{{ key }}={{ value }}&{% endif %}{% endfor %}page={{ page_obj.previous_page_number }}">Назад</a>
+                        </li>
+                        {% endif %}
+                        
+                        {% for num in page_obj.paginator.page_range %}
+                        {% if page_obj.number == num %}
+                        <li class="page-item active">
+                            <span class="page-link">{{ num }}</span>
+                        </li>
+                        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                        <li class="page-item">
+                            <a class="page-link" href="?{% for key, value in request.GET.items %}{% if key != 'page' %}{{ key }}={{ value }}&{% endif %}{% endfor %}page={{ num }}">{{ num }}</a>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+                        
+                        {% if page_obj.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?{% for key, value in request.GET.items %}{% if key != 'page' %}{{ key }}={{ value }}&{% endif %}{% endfor %}page={{ page_obj.next_page_number }}">Вперед</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

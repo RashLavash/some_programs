@@ -1,0 +1,189 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="car-detail">
+    <div class="row">
+        <div class="col-lg-6">
+            <!-- Галерея -->
+            <div class="row">
+                <div class="col-12 mb-3">
+                    <img id="mainImage" src="{% if car.get_first_image %}{{ car.get_first_image.image.url }}{% else %}https://via.placeholder.com/600x400{% endif %}" 
+                         alt="{{ car }}" class="img-fluid rounded">
+                </div>
+                <div class="col-12">
+                    <div class="gallery-thumbnails">
+                        {% for image in car.get_all_images %}
+                        <img src="{{ image.image.url }}" alt="{{ car }}" class="gallery-thumb {% if forloop.first %}active{% endif %}">
+                        {% empty %}
+                        <img src="https://via.placeholder.com/150x100" alt="Нет изображений" class="gallery-thumb active">
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-6">
+            <h1>{{ car.brand.name }} {{ car.model }}</h1>
+            <h3 class="text-primary mb-4">{{ car.price }} ₽</h3>
+            
+            <div class="specs-table">
+                <h5>Технические характеристики</h5>
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong>Год выпуска:</strong> {{ car.year }}
+                    </div>
+                    <div class="col-md-6">
+                        <strong>Пробег:</strong> {{ car.mileage }} км
+                    </div>
+                    <div class="col-md-6">
+                        <strong>Тип двигателя:</strong> {{ car.get_engine_type_display }}
+                    </div>
+                    <div class="col-md-6">
+                        <strong>Объем двигателя:</strong> {{ car.engine_volume }} л
+                    </div>
+                    <div class="col-md-6">
+                        <strong>Мощность:</strong> {{ car.power }} л.с.
+                    </div>
+                    <div class="col-md-6">
+                        <strong>Коробка передач:</strong> {{ car.get_transmission_display }}
+                    </div>
+                    <div class="col-md-6">
+                        <strong>Привод:</strong> {{ car.get_drive_display }}
+                    </div>
+                    <div class="col-md-6">
+                        <strong>Цвет:</strong> {{ car.color }}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-4">
+                <h5>Описание</h5>
+                <p>{{ car.description }}</p>
+            </div>
+            
+            <div class="d-grid gap-2">
+                <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#orderModal">
+                    <i class="fas fa-shopping-cart me-2"></i>Купить сейчас
+                </button>
+                <a href="{% url 'reviews:reviews' %}" class="btn btn-outline-primary">
+                    <i class="fas fa-comments me-2"></i>Оставить отзыв
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Модальное окно для заказа -->
+<div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="orderModalLabel">Оформление заказа</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="orderForm">
+                    {% csrf_token %}
+                    <input type="hidden" name="car_id" value="{{ car.id }}">
+                    
+                    <div class="mb-3">
+                        <label for="full_name" class="form-label">ФИО</label>
+                        <input type="text" class="form-control" id="full_name" name="full_name" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Контактный телефон</label>
+                        <input type="tel" class="form-control" id="phone" name="phone" required 
+                               placeholder="+7 (___) ___-__-__">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Итоговая сумма</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" value="{{ car.price }} ₽" readonly>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="agree" name="agree" required>
+                        <label class="form-check-label" for="agree">
+                            Согласен на обработку персональных данных
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                <button type="button" class="btn btn-primary" id="submitOrder">
+                    <i class="fas fa-paper-plane me-2"></i>Оформить заказ
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const submitOrderBtn = document.getElementById('submitOrder');
+    const orderForm = document.getElementById('orderForm');
+    
+    submitOrderBtn.addEventListener('click', function() {
+        // Собираем данные формы
+        const formData = new FormData(orderForm);
+        const data = {
+            car_id: formData.get('car_id'),
+            full_name: formData.get('full_name'),
+            phone: formData.get('phone'),
+            total_amount: {{ car.price|floatformat:"0" }},
+            agree: formData.get('agree') === 'on'
+        };
+        
+        // Проверка валидности формы
+        if (!data.full_name || !data.phone || !data.agree) {
+            alert('Пожалуйста, заполните все обязательные поля и подтвердите согласие на обработку данных.');
+            return;
+        }
+        
+        // Отправка данных в Telegram (заглушка)
+        sendToTelegram(data);
+        
+        // Закрываем модальное окно
+        const modal = bootstrap.Modal.getInstance(document.getElementById('orderModal'));
+        modal.hide();
+        
+        // Показываем сообщение об успехе
+        alert('Спасибо за заказ! Мы свяжемся с вами в ближайшее время.');
+        
+        // Очищаем форму
+        orderForm.reset();
+    });
+    
+    function sendToTelegram(data) {
+        // Здесь будет интеграция с Telegram API
+        console.log('Данные заказа:', data);
+        
+        // Пример отправки в Telegram бота (нужно будет настроить)
+        const telegramToken = 'YOUR_BOT_TOKEN';
+        const chatId = 'YOUR_CHAT_ID';
+        const message = `Новый заказ!\n\nАвтомобиль: ${data.car_id}\nФИО: ${data.full_name}\nТелефон: ${data.phone}\nСумма: ${data.total_amount} ₽`;
+        const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+        const response = fetch(`http://localhost:8000/orders/create/${data.car_id}/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrfToken,
+            },
+            body: JSON.stringify({
+                full_name: data.full_name,
+                phone: data.phone,
+            })
+        });
+        console.log(response)
+    }
+});
+</script>
+{% endblock %}
